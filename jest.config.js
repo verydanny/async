@@ -12,16 +12,16 @@ module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
-    '\\.(gql|graphql)$': 'jest-transform-graphql',
+    '\\.(gql|graphql)$': 'jest-transform-graphql'
   },
   watchPathIgnorePatterns: ['<rootDir>/node_modules/'],
   testRegex: '.*\\.test\\.tsx?$',
   testEnvironmentOptions: {
-    url: 'http://localhost:3000/',
+    url: 'http://localhost:3000/'
   },
   coverageDirectory: './coverage/',
   collectCoverage: true,
-  moduleNameMapper,
+  moduleNameMapper
 }
 
 function getPackageNames() {

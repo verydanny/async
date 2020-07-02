@@ -36,9 +36,7 @@ const hasMagicWebpackComment = <T extends Types.StringLiteral>(
         | NodePath<Types.CommentBlock>
         | NodePath<Types.CommentLine>).getSource()
 
-      if (WEBPACK_CHUNKNAME.test(commentSource)) {
-        return true
-      }
+      return WEBPACK_CHUNKNAME.test(commentSource)
     }
 
     return false
@@ -102,12 +100,11 @@ function addProps(
 
     if (!dynamicImports.length) return undefined
 
-    const dynamicImportOne = dynamicImports[0].get('arguments.0')
+    const dynamicImportOne = dynamicImports[0].get('arguments.0') as NodePath<
+      Types.Node
+    >
 
-    if (
-      !Array.isArray(dynamicImportOne) &&
-      dynamicImportOne.isStringLiteral()
-    ) {
+    if (dynamicImportOne.isStringLiteral()) {
       if (webpack && !hasMagicWebpackComment(dynamicImportOne)) {
         const dynamicImportPath = dynamicImportOne.getSource()
         const cleanedImportPath = cleanImportPath(dynamicImportPath).join('-')
