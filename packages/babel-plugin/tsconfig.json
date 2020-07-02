@@ -1,0 +1,18 @@
+{
+  "extends": "../tsconfig_base.json",
+  "compilerOptions": {
+    "target": "ES2018",
+    "outDir": "./lib",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "incremental": true
+  },
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "**/*.test.ts",
+    "**/*.test.tsx"
+  ]
+}
