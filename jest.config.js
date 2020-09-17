@@ -2,7 +2,7 @@ const { readdirSync, existsSync } = require('fs')
 const path = require('path')
 
 const moduleNameMapper = getPackageNames().reduce((accumulator, name) => {
-  const scopedName = `@rentpath/${name}$`
+  const scopedName = `@torpedus/${name}$`
   accumulator[scopedName] = `<rootDir>/packages/${name}/src/index.ts`
   return accumulator
 }, {})
