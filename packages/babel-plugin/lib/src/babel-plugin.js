@@ -78,7 +78,7 @@ export default function asyncBabelPlugin({ types: t }) {
     return {
         inherits: syntaxDynamicImport,
         // not required, but useful for diagnostics
-        name: '@rentpath/async-toolkit/babel-plugin',
+        name: '@torpedus/async/babel-plugin',
         visitor: {
             Program(_path, state) {
                 state.processFunctions = new Set((state.opts && state.opts.functions) || DEFAULT_FUNCTIONS);
@@ -86,7 +86,8 @@ export default function asyncBabelPlugin({ types: t }) {
             ImportDeclaration(path, state) {
                 const { processFunctions } = state;
                 const testableFunction = Array.from(processFunctions);
-                const importSpecifiers = path.get('specifiers').filter((spec) => {
+                const specifiers = path.get('specifiers');
+                const importSpecifiers = specifiers.filter((spec) => {
                     if (spec.isImportSpecifier()) {
                         const matches = testableFunction.some((func) => {
                             const importedIdent = spec.get('imported');

@@ -61,7 +61,10 @@ function addProps(
     const options: NodePath<Types.ObjectExpression> = args[0]
     if (!options.isObjectExpression()) return undefined
 
-    const properties = options.get('properties') as NodePath<Types.Property>[]
+    const properties = options.get('properties') as NodePath<
+      Types.ObjectProperty
+    >[]
+
     const propertyMap: {
       [key: string]: NodePath<Types.ObjectMember>
     } = {}
@@ -160,7 +163,7 @@ export default function asyncBabelPlugin({
   return {
     inherits: syntaxDynamicImport,
     // not required, but useful for diagnostics
-    name: '@rentpath/async-toolkit/babel-plugin',
+    name: '@torpedus/async/babel-plugin',
     visitor: {
       Program(_path: NodePath<Types.Program>, state: State) {
         state.processFunctions = new Set(
@@ -171,8 +174,9 @@ export default function asyncBabelPlugin({
         const { processFunctions } = state
 
         const testableFunction = Array.from(processFunctions)
+        const specifiers = path.get('specifiers')
 
-        const importSpecifiers = path.get('specifiers').filter((spec) => {
+        const importSpecifiers = specifiers.filter((spec) => {
           if (spec.isImportSpecifier()) {
             const matches = testableFunction.some((func) => {
               const importedIdent = spec.get('imported')

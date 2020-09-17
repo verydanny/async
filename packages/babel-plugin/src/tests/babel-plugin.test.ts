@@ -93,7 +93,9 @@ describe('Async Babel Plugin', () => {
       })
     `)
 
-    expect(await transform(code, defaultOptions)).toBe(code)
+    const transformed = await transform(code, defaultOptions)
+
+    expect(transformed).toBe(code)
   })
 
   it('does not add an id prop if no dynamic imports exist', async () => {

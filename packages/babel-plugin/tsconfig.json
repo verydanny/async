@@ -5,13 +5,13 @@
     "outDir": "./lib",
     "baseUrl": ".",
     "rootDir": ".",
-    "incremental": true
   },
   "include": [
     "./src/**/*.ts",
     "./src/**/*.tsx"
   ],
   "exclude": [
+    "./node_modules/@types/babel__traverse/node_modules/**/*",
     "**/*.test.ts",
     "**/*.test.tsx"
   ]

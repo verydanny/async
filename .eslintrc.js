@@ -3,13 +3,9 @@ module.exports = {
     'plugin:@torpedus/typescript',
     'plugin:@torpedus/typescript-tsconfig-checking',
     'plugin:@torpedus/react',
-    // 'plugin:@rentpath/eslint-plugin-rentpath/typescript-tsconfig-checking',
-    // 'plugin:@rentpath/eslint-plugin-rentpath/react',
     'plugin:@torpedus/node',
     'plugin:@torpedus/jest',
     'plugin:@torpedus/prettier'
-    // 'plugin:@rentpath/eslint-plugin-rentpath/jest',
-    // 'plugin:@rentpath/eslint-plugin-rentpath/prettier'
   ],
   parserOptions: {
     project: [
