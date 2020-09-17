@@ -9,7 +9,6 @@
     "target": "es5",
     "downlevelIteration": true,
     "esModuleInterop": true,
-    "disableReferencedProjectLoad": true,
     "assumeChangesOnlyAffectDirectDependencies": true,
     "incremental": true,
     "jsx": "react",
